@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes | AthleticEats</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/recipes.css">
+    <style>
+        /* --- Search status bar --- */
+        #search-status {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            min-height: 2rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        @keyframes spin-recipe {
+            to { transform: rotate(360deg); }
+        }
+        #search-spinner {
+            width: 18px;
+            height: 18px;
+            border: 3px solid #e8e8e8;
+            border-top-color: #FF6F61;
+            border-radius: 50%;
+            animation: spin-recipe 0.65s linear infinite;
+            flex-shrink: 0;
+            display: none;           /* hidden by default; shown via JS */
+        }
+        #search-spinner.visible { display: block; }
+
+        #search-status-text.loading { color: #767676; }
+        #search-status-text.success { color: #27ae60; }
+        #search-status-text.empty   { color: #767676; }
+        #search-status-text.error   { color: #d93025; }
+    </style>
+    <script src="js/recipes.js" type="module"></script>
+</head>
+<body id="page-recipes">
+
+    <nav>
+        <div class="logo"><a href="index.html">ATHLETIC<span>EATS</span></a></div>
+        <ul>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="meal-planner.html">Meal Planner</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Fuel Your Performance</h1>
+        <p>Discover our curated collection of high-protein, nutrient-dense meals.</p>
+    </header>
+
+    <main style="max-width: 1200px; margin: 0 auto; padding: 2rem 5% 4rem;">
+        <div class="search-container">
+            <input type="text" id="gallery-search" placeholder="Search 25+ healthy recipes...">
+        </div>
+
+        <div class="filter-bar">
+            <ul>
+                <li><a href="#" class="active">All</a></li>
+                <li><a href="#">Breakfast</a></li>
+                <li><a href="#">Lunch</a></li>
+                <li><a href="#">Dinner</a></li>
+                <li><a href="#">Snacks</a></li>
+            </ul>
+        </div>
+
+        <section>
+            <h2 style="text-align: left; font-size: 2rem; margin-bottom: 1rem;">All Recipes</h2>
+
+            <!-- Status bar: spinner + result count message -->
+            <div id="search-status">
+                <div id="search-spinner"></div>
+                <span id="search-status-text"></span>
+            </div>
+
+            <div class="recipe-grid">
+                <!-- Recipes will be injected here by recipes.js -->
+            </div>
+        </section>
+
+        <!-- Recipe Modal -->
+        <div id="recipe-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="modal-body">
+                    <!-- Dynamic content will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <section class="featured-breakdown">
+            <h2 style="text-align: left; font-size: 2rem; margin-bottom: 1.5rem;">Preparation Efficiency</h2>
+            <p>We know your time is valuable. Our recipes are categorized by their time requirements to fit your busy training schedule, allowing you to spend less time in the kitchen and more time hitting your PRs.</p>
+            
+            <div style="margin-top: 2rem;">
+                <h3 style="margin-bottom: 1rem;">Typical Time Breakdown</h3>
+                <ol class="time-list" style="list-style: none;">
+                    <li>
+                        <strong>Pre-Workout Preparation</strong>
+                        <ul style="list-style: circle; padding-left: 2rem; margin-top: 0.5rem; color: var(--text-muted);">
+                            <li>Vegetable Processing: 8-10 mins</li>
+                            <li>Protein Trimming & Seasoning: 5 mins</li>
+                            <li>Marinade Infusion: 15-30 mins</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Active Cooking Phase</strong>
+                        <ul style="list-style: circle; padding-left: 2rem; margin-top: 0.5rem; color: var(--text-muted);">
+                            <li>Searing/Sautéing: 12 mins</li>
+                            <li>Simmering/Roasting: 15-20 mins</li>
+                            <li>Thermal Resting: 5 mins</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Post-Meal Efficiency</strong>
+                        <ul style="list-style: circle; padding-left: 2rem; margin-top: 0.5rem; color: var(--text-muted);">
+                            <li>Surface Sanitization: 2 mins</li>
+                            <li>Dish Management: 5 mins</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Meal Prep & Storage</strong>
+                        <ul style="list-style: circle; padding-left: 2rem; margin-top: 0.5rem; color: var(--text-muted);">
+                            <li>Portioning for 3 Days: 4 mins</li>
+                            <li>Labeling Macros & Dates: 2 mins</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 AthleticEats. Real Food. Real Results.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+/* --- Hero --- */
+#page-home header.hero {
+    padding: 11rem 5% 9rem;
+    background:
+        linear-gradient(160deg, rgba(10, 10, 10, 0.58) 0%, rgba(10, 10, 10, 0.32) 100%),
+        url('../images/hero image.avif') center / cover no-repeat;
+    animation: heroFadeIn 0.9s ease-out both;
+}
+
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#page-home header.hero h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.18);
+}
+
+#page-home header.hero p {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    max-width: 620px;
+    margin: 0 auto 2.8rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 400;
+    line-height: 1.75;
+}
+
+/* --- Method Section --- */
+#page-home main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 5%;
+}
+
+#page-home main > section > h2 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+#page-home main > section > h2::after {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 4px;
+    background: var(--accent-coral);
+    border-radius: 4px;
+    margin: 0.75rem auto 0;
+}
+
+/* --- Feature Grid --- */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+.feature-box {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.feature-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-coral), #ff9a8b);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.feature-box:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: transparent;
+}
+
+.feature-box:hover::before {
+    opacity: 1;
+}
+
+.feature-box h3 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.feature-box > p {
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    line-height: 1.75;
+}
+
+/* --- Philosophy List --- */
+.philosophy-list {
+    margin-top: 2rem;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: philosophy-counter;
+}
+
+.philosophy-list > li {
+    counter-increment: philosophy-counter;
+    margin-bottom: 1rem;
+    padding: 1.1rem 1.2rem 1.1rem 3.6rem;
+    position: relative;
+    font-weight: 700;
+    font-size: 0.93rem;
+    background: var(--bg-color);
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.philosophy-list > li:hover {
+    border-color: var(--accent-coral-light);
+    background: var(--accent-coral-light);
+}
+
+.philosophy-list > li::before {
+    content: counter(philosophy-counter, decimal-leading-zero);
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: var(--accent-coral);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.philosophy-sublist {
+    list-style: none;
+    margin-top: 0.6rem;
+    padding-left: 0;
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.85;
+}
+
+.philosophy-sublist li {
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.philosophy-sublist li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-coral);
+    font-size: 0.78rem;
+    top: 0.18em;
+}

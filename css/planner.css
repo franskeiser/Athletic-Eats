@@ -1,0 +1,412 @@
+/* --- Hero --- */
+#page-planner header.hero {
+    padding: 7rem 5% 5rem;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
+        url('../images/fitness.avif') center / cover no-repeat;
+}
+
+#page-planner header.hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: var(--text-main);
+    margin-bottom: 0.8rem;
+}
+
+#page-planner header.hero p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* --- Planner Sections --- */
+.planner-section {
+    background: var(--white);
+    padding: 1.8rem 2.2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.planner-section:hover {
+    border-color: var(--accent-coral);
+    box-shadow: 0 8px 30px rgba(255, 111, 97, 0.12);
+    transform: translateX(5px);
+}
+
+.meal-info h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.2px;
+}
+
+.meal-info p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+/* --- Select Button --- */
+.btn-select {
+    background: transparent;
+    color: var(--accent-coral);
+    border: 2px solid var(--accent-coral);
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-pill);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.btn-select:hover {
+    background: var(--accent-coral);
+    color: var(--white);
+    box-shadow: 0 8px 22px rgba(255, 111, 97, 0.32);
+    transform: translateY(-2px);
+}
+
+/* --- Slot Actions & Extra Button --- */
+.slot-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.btn-add-extra {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px dashed var(--accent-coral);
+    background: var(--white);
+    color: var(--accent-coral);
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-add-extra:hover {
+    background: var(--accent-coral-light);
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* --- Extras List --- */
+.extras-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.extra-tag {
+    background: var(--bg-color);
+    border: 1px solid #eee;
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.extra-tag .remove-extra {
+    cursor: pointer;
+    color: #e74c3c;
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.extra-tag .remove-extra:hover {
+    transform: scale(1.2);
+}
+
+/* --- Totals Panel --- */
+.totals-panel {
+    background: linear-gradient(135deg, #181818 0%, #2a2a2a 100%);
+    padding: 3.5rem;
+    border-radius: 24px;
+    margin-top: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.totals-panel::after {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -5%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(255, 111, 97, 0.14) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    background: rgba(255, 111, 97, 0.1);
+    border-color: rgba(255, 111, 97, 0.28);
+}
+
+.stat-item .stat-val {
+    font-size: 2.6rem;
+    color: var(--accent-coral);
+    display: block;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Guide List --- */
+.guide-list {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: guide-counter;
+}
+
+.guide-list > li {
+    counter-increment: guide-counter;
+    background: var(--white);
+    padding: 1.7rem 1.8rem 1.7rem 5rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.9rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+    position: relative;
+    font-weight: 600;
+    font-size: 0.93rem;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.guide-list > li:hover {
+    border-color: var(--accent-coral);
+    transform: translateX(5px);
+}
+
+.guide-list > li::before {
+    content: counter(guide-counter);
+    position: absolute;
+    left: 1.6rem;
+    top: 1.6rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background: var(--accent-coral-light);
+    color: var(--accent-coral);
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+
+/* --- Selection Modal --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(12px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 3% auto;
+    padding: 3.5rem;
+    border-radius: 32px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.modal-header h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+#recipe-search {
+    width: 100%;
+    padding: 1.1rem 2rem;
+    border-radius: 100px;
+    border: 2px solid #f0f0f0;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: #f9f9f9;
+}
+
+#recipe-search:focus {
+    outline: none;
+    border-color: var(--accent-coral);
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(255,111,97,0.15);
+}
+
+.modal-recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.modal-recipe-item {
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.2rem;
+    border: 1px solid #eee;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: left;
+}
+
+.modal-recipe-item:hover {
+    border-color: var(--accent-coral);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transform: translateY(-5px);
+}
+
+.modal-recipe-item img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 1rem;
+}
+
+.modal-recipe-item h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.modal-recipe-item p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.close-modal {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    background: var(--accent-coral);
+    color: white;
+}
+
+/* --- Selected Meal Card (Inside Slot) --- */
+.hidden { display: none !important; }
+
+.selected-meal-card {
+    background: #fcfcfc;
+    padding: 1.2rem;
+    border-radius: 16px;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border: 1px solid #f0f0f0;
+    animation: fadeIn 0.5s ease;
+}
+
+.selected-meal-card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.selected-meal-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.selected-meal-card .macro-preview {
+    font-size: 0.8rem;
+    color: var(--accent-coral);
+    font-weight: 700;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .modal-content { padding: 2rem; margin: 10% auto; }
+    .modal-recipe-grid { grid-template-columns: 1fr; }
+}
+

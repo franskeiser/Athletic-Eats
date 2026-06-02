@@ -1,0 +1,133 @@
+:root {
+    --bg-color: #f6f7f9;
+    --text-main: #1a1a1a;
+    --text-muted: #767676;
+    --accent-coral: #FF6F61;
+    --accent-coral-dark: #e55e50;
+    --accent-coral-light: #fff1f0;
+    --white: #ffffff;
+    --border: #e8e8e8;
+    --card-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    --card-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.13);
+    --transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --radius: 20px;
+    --radius-sm: 12px;
+    --radius-pill: 100px;
+}
+
+html { scroll-behavior: smooth; }
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Navigation --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 8%;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--accent-coral);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    letter-spacing: 0.01em;
+    display: block;
+}
+
+nav ul li a:hover {
+    color: var(--text-main);
+    background: var(--bg-color);
+}
+
+#page-recipes nav ul li a[href="recipes.html"],
+#page-planner nav ul li a[href="meal-planner.html"],
+#page-calculator nav ul li a[href="calculator.html"] {
+    color: var(--accent-coral);
+    background: var(--accent-coral-light);
+}
+
+/* --- Hero base --- */
+header.hero {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+    display: inline-block;
+    background: var(--accent-coral);
+    color: var(--white);
+    padding: 0.95rem 2.4rem;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    border: none;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: var(--accent-coral-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 111, 97, 0.38);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 3rem 5%;
+    background: #111111;
+    color: #666;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+}

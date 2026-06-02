@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro Calculator | AthleticEats</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/calculator.css">
+    <script src="js/calculator.js" defer></script>
+</head>
+<body id="page-calculator">
+
+    <nav>
+        <div class="logo"><a href="index.html">ATHLETIC<span>EATS</span></a></div>
+        <ul>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="meal-planner.html">Meal Planner</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Macro Calculator</h1>
+        <p>Calculate your daily energy expenditure and custom macro splits based on your goals.</p>
+    </header>
+
+    <main style="padding: 4rem 5%;">
+        <div class="calc-container">
+            <section class="calc-card">
+                <form id="macro-form" novalidate>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" placeholder="e.g. 25" required min="15" max="100">
+                            <span class="error-message">Please enter a valid age (15-100).</span>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group">
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" placeholder="e.g. 80" required min="30" max="250">
+                            <span class="error-message">Please enter a valid weight.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Height (cm)</label>
+                            <input type="number" id="height" placeholder="e.g. 180" required min="100" max="250">
+                            <span class="error-message">Please enter a valid height.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activity">Activity Level</label>
+                        <select id="activity" required>
+                            <option value="1.2">Sedentary (Little to no exercise)</option>
+                            <option value="1.375">Lightly Active (1-3 days/week)</option>
+                            <option value="1.55">Moderately Active (3-5 days/week)</option>
+                            <option value="1.725">Very Active (6-7 days/week)</option>
+                            <option value="1.9">Extra Active (Professional athlete)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal">Your Goal</label>
+                        <select id="goal" required>
+                            <option value="maintain">Maintain Weight</option>
+                            <option value="lose">Lose Weight (Deficit)</option>
+                            <option value="gain">Gain Muscle (Surplus)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Calculate Macros</button>
+                </form>
+            </section>
+
+            <!-- Results hidden by default -->
+            <section id="results" class="results-panel">
+                <h2 style="color: white; margin-bottom: 0.5rem; text-align: center;">Your Daily Targets</h2>
+                <p style="opacity: 0.7; margin-bottom: 2rem;">Based on your inputs, here is your optimal daily intake:</p>
+                
+                <div class="results-grid">
+                    <div class="res-item">
+                        <span id="res-calories" class="res-val">---</span>
+                        <span class="res-label">Calories</span>
+                    </div>
+                    <div class="res-item">
+                        <span id="res-protein" class="res-val">---</span>
+                        <span class="res-label">Protein (g)</span>
+                    </div>
+                    <div class="res-item">
+                        <span id="res-carbs" class="res-val">---</span>
+                        <span class="res-label">Carbs (g)</span>
+                    </div>
+                    <div class="res-item">
+                        <span id="res-fats" class="res-val">---</span>
+                        <span class="res-label">Fats (g)</span>
+                    </div>
+                </div>
+
+                <button id="reset-calc" class="btn-primary" style="background: transparent; border: 2px solid var(--accent-coral); margin-top: 3rem;">Reset Calculator</button>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AthleticEats. Fuel your fire.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AthleticEats | Real Food. Real Results.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
+    <style>
+        /* --- Featured Recipes section --- */
+        .featured-section {
+            padding: 4rem 8%;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+        }
+        .featured-section h2 {
+            font-size: clamp(1.6rem, 3vw, 2rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.4rem;
+        }
+        .featured-section h2 span { color: var(--accent-coral); }
+        .featured-section .section-sub {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Skeleton loaders while fetching */
+        .skeleton-card {
+            height: 260px;
+            border-radius: var(--radius);
+            background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s infinite;
+        }
+        @keyframes shimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Featured recipe cards */
+        .featured-card {
+            display: block;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            text-decoration: none;
+            color: var(--text-main);
+            background: var(--white);
+            transition: var(--transition);
+        }
+        .featured-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-shadow-hover);
+        }
+        .featured-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .featured-card-body { padding: 1.2rem; }
+        .featured-badge {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: capitalize;
+            background: var(--accent-coral-light);
+            color: var(--accent-coral);
+            margin-bottom: 0.5rem;
+        }
+        .featured-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .featured-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+        .featured-cta { text-align: center; }
+    </style>
+    <script src="js/home.js" defer></script>
+</head>
+<body id="page-home">
+
+    <nav>
+        <div class="logo"><a href="index.html">ATHLETIC<span>EATS</span></a></div>
+        <ul>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="meal-planner.html">Meal Planner</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Real Food.<br>Real Results.</h1>
+        <p>Expertly crafted recipes for people who care about their training and their taste buds. Clean ingredients, tracked macros, delicious results.</p>
+        <a href="recipes.html" class="btn-primary">Browse Recipes</a>
+    </header>
+
+    <!-- Featured Recipes — loaded via AJAX from the database -->
+    <section class="featured-section" id="featured-section">
+        <h2>Popular <span>Recipes</span></h2>
+        <p class="section-sub">A few of our most-loved meals, pulled live from the database.</p>
+        <div class="featured-grid" id="featured-grid">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+        </div>
+        <div class="featured-cta">
+            <a href="recipes.html" class="btn-primary">View All Recipes</a>
+        </div>
+    </section>
+
+    <main>
+        <section>
+            <h2>The AthleticEats Method</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h3>Our Process</h3>
+                    <p>We follow a strict three-step approach to every meal we design to ensure you hit your goals without sacrificing flavor.</p>
+                    <ol class="philosophy-list">
+                        <li>
+                            Macro-First Architecture
+                            <ul class="philosophy-sublist">
+                                <li>High protein baseline for muscle recovery</li>
+                                <li>Controlled healthy fats for hormonal health</li>
+                                <li>Complex carbs for sustained training energy</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Whole Food Sourcing
+                            <ul class="philosophy-sublist">
+                                <li>Zero processed sugars</li>
+                                <li>Focus on seasonal micronutrients</li>
+                            </ul>
+                        </li>
+                        <li>Simplified Preparation</li>
+                    </ol>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Why Choose Us?</h3>
+                    <p>Most fitness sites treat food like fuel alone. We treat it like an experience. Our gallery-first approach makes healthy eating something you look forward to.</p>
+                    <br>
+                    <p>No subscriptions. No paywalls. Just great food for real athletes.</p>
+                    <br>
+                    <a href="meal-planner.html" style="color:var(--accent-coral);font-weight:700;text-decoration:none;">Try the Meal Planner &rarr;</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AthleticEats. All rights reserved. Fuel your fire.</p>
+    </footer>
+
+</body>
+</html>
