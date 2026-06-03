@@ -1,0 +1,14 @@
+# Disable directory listing
+Options -Indexes
+
+# Block direct browser access to internal-only PHP files
+<FilesMatch "^(config|db|auth)\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block direct access to the SQL setup file
+<FilesMatch "\.sql$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

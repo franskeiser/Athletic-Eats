@@ -1,8 +1,8 @@
 <?php
-/**
- * api.php — Public JSON API for the AthleticEats frontend.
- */
 header('Content-Type: application/json');
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('Cache-Control: no-store');
 
 require_once 'db.php';
 

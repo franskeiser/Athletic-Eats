@@ -1,5 +1,7 @@
 <?php
-require_once 'db.php';
+require_once __DIR__ . '/auth.php';
+require_login();
+require_once __DIR__ . '/db.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 if ($id <= 0) { header('Location: index.php'); exit; }
@@ -25,6 +27,11 @@ $fields = [
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (!csrf_validate()) {
+        http_response_code(403);
+        die('Invalid CSRF token. Please go back and try again.');
+    }
 
     // Sanitize and collect text input; keep current image until we know a new one was uploaded
     foreach ($fields as $key => $_) {
@@ -227,6 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li><a href="../meal-planner.html">Meal Planner</a></li>
         <li><a href="../calculator.html">Calculator</a></li>
         <li><a href="index.php" style="color:var(--accent-coral);background:var(--accent-coral-light);">Admin</a></li>
+        <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>
 
@@ -236,6 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="subtitle">Editing: <strong><?= htmlspecialchars($recipe['title']) ?></strong> &mdash; Fields marked <span style="color:var(--accent-coral)">*</span> are required.</p>
 
         <form method="POST" action="edit.php?id=<?= $id ?>" enctype="multipart/form-data" novalidate>
+            <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
 
             <div class="form-group">
                 <label for="title">Recipe Title <span class="required">*</span></label>

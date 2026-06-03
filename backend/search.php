@@ -1,8 +1,8 @@
 <?php
-/**
- * search.php — Live recipe search/filter endpoint.
- */
 header('Content-Type: application/json');
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('Cache-Control: no-store');
 require_once 'db.php';
 
 $query    = trim($_GET['q']        ?? '');

@@ -1,10 +1,5 @@
-
-
-CREATE DATABASE IF NOT EXISTS athleticeats
-    CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci;
-
-USE athleticeats;
+-- InfinityFree: select your database in phpMyAdmin first, then run this.
+-- (CREATE DATABASE and USE are not allowed on shared hosting.)
 
 CREATE TABLE IF NOT EXISTS recipes (
     id          INT AUTO_INCREMENT PRIMARY KEY,

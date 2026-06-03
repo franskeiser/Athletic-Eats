@@ -1,5 +1,7 @@
 <?php
-require_once 'db.php';
+require_once __DIR__ . '/auth.php';
+require_login();
+require_once __DIR__ . '/db.php';
 
 // Fetch all recipes ordered by newest first
 $stmt    = $pdo->query('SELECT id, title, category, calories, protein, carbs, fat FROM recipes ORDER BY created_at DESC');
@@ -92,6 +94,7 @@ $recipes = $stmt->fetchAll();
         <li><a href="../meal-planner.html">Meal Planner</a></li>
         <li><a href="../calculator.html">Calculator</a></li>
         <li><a href="index.php" style="color:var(--accent-coral);background:var(--accent-coral-light);">Admin</a></li>
+        <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>
 

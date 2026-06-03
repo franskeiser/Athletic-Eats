@@ -1,5 +1,7 @@
 <?php
-require_once 'db.php';
+require_once __DIR__ . '/auth.php';
+require_login();
+require_once __DIR__ . '/db.php';
 
 $errors = [];
 $fields = [
@@ -16,6 +18,11 @@ $fields = [
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (!csrf_validate()) {
+        http_response_code(403);
+        die('Invalid CSRF token. Please go back and try again.');
+    }
 
     // Sanitize and collect text input
     foreach ($fields as $key => $_) {
@@ -220,6 +227,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li><a href="../meal-planner.html">Meal Planner</a></li>
         <li><a href="../calculator.html">Calculator</a></li>
         <li><a href="index.php" style="color:var(--accent-coral);background:var(--accent-coral-light);">Admin</a></li>
+        <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>
 
@@ -230,6 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- enctype required for file uploads -->
         <form method="POST" action="add.php" enctype="multipart/form-data" novalidate>
+            <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
 
             <div class="form-group">
                 <label for="title">Recipe Title <span class="required">*</span></label>

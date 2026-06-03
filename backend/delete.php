@@ -1,5 +1,7 @@
 <?php
-require_once 'db.php';
+require_once __DIR__ . '/auth.php';
+require_login();
+require_once __DIR__ . '/db.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
@@ -20,6 +22,10 @@ if (!$recipe) {
 
 // --- Handle confirmed deletion ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!csrf_validate()) {
+        http_response_code(403);
+        die('Invalid CSRF token. Please go back and try again.');
+    }
     $stmt = $pdo->prepare('DELETE FROM recipes WHERE id = :id');
     $stmt->execute([':id' => $id]);
 
@@ -109,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li><a href="../meal-planner.html">Meal Planner</a></li>
         <li><a href="../calculator.html">Calculator</a></li>
         <li><a href="index.php" style="color:var(--accent-coral);background:var(--accent-coral-light);">Admin</a></li>
+        <li><a href="logout.php">Logout</a></li>
     </ul>
 </nav>
 
@@ -125,6 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="confirm-actions">
             <!-- POST form so the deletion is triggered by a form submit, not a GET link -->
             <form method="POST" action="delete.php?id=<?= $id ?>">
+                <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
                 <button type="submit" class="btn-danger">Yes, Delete</button>
             </form>
             <a href="index.php" class="btn-cancel">Cancel</a>
